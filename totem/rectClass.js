@@ -1,8 +1,8 @@
 class Rectangles {
-  constructor(y) {
-    this.x = width / 2;
+  constructor(x, y) {
+    this.x = x;
     this.y = y;
-    this.rectWidth = 100;
+    this.rectWidth = rectWidth;
     this.rectHeight = rectHeight;
     this.ySpeed = 4;
     this.r = 0;
@@ -20,39 +20,43 @@ class Rectangles {
     }
   }
   changeColor() {
-    colorR = colorR + 0.0001;
-    colorG = colorG + 0.0002;
-    colorB = colorB + 0.0003;
+    colorR = colorR + 0.001;
+    colorG = colorG + 0.002;
+    colorB = colorB + 0.003;
 
     this.r = map(
       this.y,
       this.y + this.rectHeight,
-      -75,
+      -600,
       noise(colorR) * 255,
       255
     );
     this.g = map(
       this.y,
       this.y + this.rectHeight,
-      -75,
+      -600,
       noise(colorG) * 255,
       255
     );
     this.b = map(
       this.y,
       this.y + this.rectHeight,
-      -75,
+      -600,
       noise(colorB) * 255,
       255
     );
     //noStroke();
-    fill(this.r, this.g, this.b, 100);
+    stroke(this.r, this.g, this.b);
+    strokeWeight(0.5);
+    noFill();
+    //fill(this.r, this.g, this.b, 10);
   }
   fractalize(x, y, sX, sY) {
     let n = 0.5;
     //rect(x, y, sX, sY);
-    rect(x, y + 75 * 2, sX * 1.5, sY * 4);
-    //rect(x, y + 75 * 2, sX * 1.3, sY);
+    ellipse(x, y, sX * 1.3, sY);
+    ellipse(x, y, sX * 1.5, sY * 4);
+
     if (sX > 5) {
       this.fractalize(x + sX * n, y + sY * n, sX * n, sY * n);
       this.fractalize(x - sX * n, y - sY * n, sX * n, sY * n);
