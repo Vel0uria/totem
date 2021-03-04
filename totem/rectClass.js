@@ -1,10 +1,10 @@
 class Rectangles {
-  constructor(x, y) {
+  constructor(x, y, w) {
     this.x = x;
     this.y = y;
-    this.rectWidth = rectWidth;
+    this.rectWidth = w;
     this.rectHeight = rectHeight;
-    this.ySpeed = 4;
+    this.ySpeed = 2;
     this.r = 0;
     this.g = 0;
     this.b = 0;
@@ -46,7 +46,8 @@ class Rectangles {
       255
     );
     //noStroke();
-    stroke(this.r, this.g, this.b);
+    stroke(100);
+    //stroke(this.r, this.g, this.b);
     strokeWeight(0.5);
     noFill();
     //fill(this.r, this.g, this.b, 10);
