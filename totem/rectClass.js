@@ -4,7 +4,7 @@ class Rectangles {
     this.y = y;
     this.rectWidth = w;
     this.rectHeight = rectHeight;
-    this.ySpeed = 2;
+    this.ySpeed = 3;
     this.r = 0;
     this.g = 0;
     this.b = 0;
@@ -20,37 +20,38 @@ class Rectangles {
     }
   }
   changeColor() {
-    colorR = colorR + 0.001;
-    colorG = colorG + 0.002;
-    colorB = colorB + 0.003;
+    colorR = colorR + 0.0001;
+    colorG = colorG + 0.0002;
+    colorB = colorB + 0.0003;
 
     this.r = map(
       this.y,
       this.y + this.rectHeight,
       -600,
       noise(colorR) * 255,
-      255
+      250
     );
     this.g = map(
       this.y,
       this.y + this.rectHeight,
       -600,
       noise(colorG) * 255,
-      255
+      250
     );
     this.b = map(
       this.y,
       this.y + this.rectHeight,
       -600,
       noise(colorB) * 255,
-      255
+      250
     );
     //noStroke();
-    stroke(100);
-    //stroke(this.r, this.g, this.b);
+    //stroke(100);
+    // noFill();
+    stroke(this.r, this.g, this.b);
     strokeWeight(0.5);
-    noFill();
-    //fill(this.r, this.g, this.b, 10);
+
+    fill(this.r, this.g, this.b, 50);
   }
   fractalize(x, y, sX, sY) {
     let n = 0.5;

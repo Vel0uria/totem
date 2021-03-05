@@ -15,7 +15,7 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
   rectMode(CENTER);
   y = height;
-  x = width / 2;
+  x = width;
   x1 = x / 2;
   for (let i = 0; i < 9; i++) {
     y = y + rectHeight;
@@ -28,29 +28,39 @@ function draw() {
   background(0);
 
   displayColumns(x, rectWidth);
+  displayColumns1(rectWidth, rectWidth);
 }
 
 function displayColumns(xPos, w) {
-  n = 0.7;
+  //poner una columna en 0, otra en width y desplegar hasta el centro reduciendo rectWidth
+  n = 0.8;
   for (let i = 0; i < rectangles.length; i++) {
     rectangles[i].move();
     rectangles[i].changeColor();
-    rectangles[i].fractalize(xPos, rectangles[i].y, w, rectHeight);
+    rectangles[i].fractalize(
+      xPos - rectWidth,
+      rectangles[i].y + 75,
+      w,
+      rectHeight
+    );
   }
 
-  // for (let i = 0; i < rectangles.length; i++) {
-  //   rectangles[i].move();
-  //   rectangles[i].changeColor();
-  //   rectangles[i].fractalize(xPos * 1.1, rectangles[i].y, w, rectHeight * 1.2);
-  // }
-  // for (let i = 0; i < rectangles.length; i++) {
-  //   rectangles[i].move();
-  //   rectangles[i].changeColor();
-  //   rectangles[i].fractalize(xPos / 2, rectangles[i].y, w, rectHeight);
-  // }
+  if (w > 45) {
+    displayColumns(xPos / 1.2 + w * n, w * n);
+    // displayColumns(xPos * 1.2 + w * n, w * n);
+  }
+}
 
-  if (w > 30) {
-    displayColumns(xPos * 1.2, w * n);
-    displayColumns(xPos / 1.4, w * n);
+function displayColumns1(xPos, w) {
+  //poner una columna en 0, otra en width y desplegar hasta el centro reduciendo rectWidth
+  n = 0.8;
+  for (let i = 0; i < rectangles.length; i++) {
+    rectangles[i].move();
+    rectangles[i].changeColor();
+    rectangles[i].fractalize(xPos, rectangles[i].y + 75, w, rectHeight);
+  }
+
+  if (w > 45) {
+    displayColumns1(xPos + 280 * n + w, w * n);
   }
 }
