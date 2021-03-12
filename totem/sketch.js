@@ -9,7 +9,7 @@ let colorR = 0.0;
 let colorG = 0.0;
 let colorB = 0.0;
 let noiseX = 0.0;
-let xSpeed = 1;
+let xSpeed = 2;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -29,6 +29,10 @@ function draw() {
 
   displayColumns(x, rectWidth);
   displayColumns1(rectWidth, rectWidth);
+  fill(0);
+  noStroke();
+  triangle(30, 0, width / 2, height / 2 - 150, width - 30, 0);
+  triangle(30, height, width / 2, height / 2 + 30, width - 30, height);
 }
 
 function displayColumns(xPos, w) {
@@ -45,8 +49,8 @@ function displayColumns(xPos, w) {
     );
   }
 
-  if (w > 45) {
-    displayColumns(xPos / 1.2 + w * n, w * n);
+  if (w > 30) {
+    displayColumns(xPos / 1.12 + w * n, w * n);
     // displayColumns(xPos * 1.2 + w * n, w * n);
   }
 }
@@ -60,7 +64,7 @@ function displayColumns1(xPos, w) {
     rectangles[i].fractalize(xPos, rectangles[i].y + 75, w, rectHeight);
   }
 
-  if (w > 45) {
-    displayColumns1(xPos + 280 * n + w, w * n);
+  if (w > 30) {
+    displayColumns1(xPos + 170 * n + w, w * n);
   }
 }
