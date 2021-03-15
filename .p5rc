@@ -1,6 +1,7 @@
 {
   "name": "totem",
   "projects": [
-    "totem"
+    "totem",
+    "column"
   ]
 }
