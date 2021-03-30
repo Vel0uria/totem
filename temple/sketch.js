@@ -17,7 +17,7 @@ function setup() {
   y = height;
   x = width;
   x1 = x / 2;
-  for (let i = 0; i < 9; i++) {
+  for (let i = 0; i < 8; i++) {
     y = y + rectHeight;
     rectangles.push(new Rectangles(x, y, rectWidth));
     rectangles1.push(new Rectangles(x, y, rectWidth));
@@ -29,15 +29,29 @@ function draw() {
 
   //refactorizar la posición en x y el tamaño en ambas funciones para que sean simétricas
 
-  displayColumns(x, rectWidth);
-  displayColumns1(rectWidth, rectWidth);
+  columnsRight(x, rectWidth);
+  columnsLeft(rectWidth, rectWidth);
   fill(0);
   noStroke();
-  triangle(30, 0, width / 2, height / 2 - 150, width - 30, 0);
-  triangle(30, height, width / 2, height / 2 + 30, width - 30, height);
+
+  beginShape();
+
+  vertex(30, 0);
+  vertex(width - 30, 0);
+
+  vertex(width / 2 + 10, height / 2 - 100);
+  vertex(width / 2, height / 2 - 110);
+  endShape(CLOSE);
+
+  beginShape();
+  vertex(30, height);
+  vertex(width - 30, height);
+  vertex(width / 2 + 20, height / 2);
+  vertex(width / 2, height / 2);
+  endShape(CLOSE);
 }
 
-function displayColumns(xPos, w) {
+function columnsRight(xPos, w) {
   n = 0.8;
   for (let i = 0; i < rectangles.length; i++) {
     rectangles[i].move();
@@ -50,13 +64,13 @@ function displayColumns(xPos, w) {
     );
   }
 
-  if (w > 30) {
-    displayColumns(xPos / 1.12 + w * n, w * n);
+  if (w > 25) {
+    columnsRight(xPos / 1.12 + w * n, w * n);
     // displayColumns(xPos * 1.2 + w * n, w * n);
   }
 }
 
-function displayColumns1(xPos, w) {
+function columnsLeft(xPos, w) {
   //poner una columna en 0, otra en width y desplegar hasta el centro reduciendo rectWidth
   n = 0.8;
   for (let i = 0; i < rectangles.length; i++) {
@@ -65,7 +79,7 @@ function displayColumns1(xPos, w) {
     rectangles[i].fractalize(xPos, rectangles[i].y + 75, w, rectHeight);
   }
 
-  if (w > 30) {
-    displayColumns1(xPos + 170 * n + w, w * n);
+  if (w > 25) {
+    columnsLeft(xPos + 170 * n + w, w * n);
   }
 }

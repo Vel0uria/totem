@@ -28,7 +28,7 @@ class Rectangles {
       this.y,
       this.y + this.rectHeight,
       -600,
-      noise(colorR) * 255,
+      noise(colorR) * 200,
       250
     );
     this.g = map(
@@ -42,12 +42,11 @@ class Rectangles {
       this.y,
       this.y + this.rectHeight,
       -600,
-      noise(colorB) * 255,
+      noise(colorB) * 200,
       250
     );
     //noStroke();
-    //stroke(100);
-    // noFill();
+    //noFill();
     stroke(this.r, this.g, this.b);
     strokeWeight(0.5);
 

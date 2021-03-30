@@ -4,7 +4,7 @@ class Rectangles {
     this.y = y;
     this.rectWidth = w;
     this.rectHeight = rectHeight;
-    this.ySpeed = 3;
+    this.ySpeed = 7;
     this.r = 0;
     this.g = 0;
     this.b = 0;
@@ -29,29 +29,29 @@ class Rectangles {
       this.y + this.rectHeight,
       -600,
       noise(colorR) * 255,
-      250
+      255
     );
     this.g = map(
       this.y,
       this.y + this.rectHeight,
       -600,
       noise(colorG) * 255,
-      250
+      255
     );
     this.b = map(
       this.y,
       this.y + this.rectHeight,
       -600,
       noise(colorB) * 255,
-      250
+      255
     );
     //noStroke();
     //stroke(100);
-    // noFill();
-    stroke(this.r, this.g, this.b);
-    strokeWeight(0.5);
+    noFill();
+    stroke(this.r, this.g, this.b, 80);
+    strokeWeight(1.2);
 
-    fill(this.r, this.g, this.b, 50);
+    // fill(this.r, this.g, this.b, 50);
   }
   fractalize(x, y, sX, sY) {
     let n = 0.5;

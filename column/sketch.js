@@ -8,9 +8,10 @@ let colorB = 0.0;
 let noiseX = 0.0;
 function setup() {
   createCanvas(windowWidth, windowHeight);
-
   rectMode(CENTER);
   imageMode(CENTER);
+  // frameRate(30);
+  // createLoop({ startLoop: 6, duration: 6, gif: true });
   y = height;
   x = width;
   for (let i = 0; i < 9; i++) {
@@ -22,8 +23,7 @@ function setup() {
 
 function draw() {
   background(0);
-  //tint(255, 100);
-  image(spine, width / 2, height / 2, width + 600, height);
+  image(spine, width / 2 - 10, height / 2, width + 750, height);
   for (i = 0; i < rectangles.length; i++) {
     rectangles[i].move();
     rectangles[i].changeColor();
@@ -34,4 +34,5 @@ function draw() {
       rectHeight
     );
   }
+  //tint(255, 110);
 }
